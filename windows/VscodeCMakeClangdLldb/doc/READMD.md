@@ -1,7 +1,7 @@
 # VSCode CMake with clangd and LLDB
 
 - **Base project:** CMakeHelloWorld
-- Ensure `clangd` is already installed on your system
+- Ensure `Ninja` and `clangd` is already installed on your system
 
 ---
 
@@ -53,3 +53,16 @@
 
 7. Start debugging with `F5`
 
+8. In `.vscode/settings.json`, add the following:
+
+   ```json
+   "cmake.generator": "Ninja"
+   ```
+
+9. In `CMakeLists.txt`, add the following line **before** the `project(...)` line:
+
+   ```cmake
+   set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+   ```
+
+10. Confirm that `compile_commands.json` is generated in your build folder.

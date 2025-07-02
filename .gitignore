@@ -42,3 +42,6 @@
 
 # Ignore all build folders, case-insensitive
 [Bb]uild
+
+# Ignore all cache folders
+.cache
