@@ -45,3 +45,6 @@
 
 # Ignore all cache folders
 .cache
+
+# Ignore vcpkg_installed folders
+vcpkg_installed
