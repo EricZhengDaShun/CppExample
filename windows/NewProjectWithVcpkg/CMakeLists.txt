@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-project(CmakePresetExample LANGUAGES CXX)
+project(NewProjectWithVcpkg LANGUAGES CXX)
 
 find_package(fmt CONFIG REQUIRED)
 

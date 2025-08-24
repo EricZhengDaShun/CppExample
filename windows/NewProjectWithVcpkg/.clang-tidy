@@ -1,0 +1,59 @@
+---
+Checks: >
+  -*,
+  modernize-use-nullptr, 
+  readability-simplify-boolean-expr,
+  readability-identifier-naming,
+  readability-else-after-return,
+  # option
+  clang-diagnostic-*,
+  clang-analyzer-*,
+  cppcoreguidelines-pro-type-member-init,
+  cppcoreguidelines-pro-type-const-cast,
+  cppcoreguidelines-pro-type-reinterpret-cast,
+  cppcoreguidelines-pro-type-static-cast-downcast,
+  cppcoreguidelines-pro-bounds-constant-array-index,
+  cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  cppcoreguidelines-slicing,
+  cppcoreguidelines-special-member-functions,
+  modernize-use-override,
+  modernize-use-auto,
+  modernize-use-using,
+  modernize-make-unique,
+  modernize-make-shared,
+  modernize-loop-convert,
+  modernize-raw-string-literal,
+  bugprone-assert-side-effect,
+  bugprone-sizeof-expression,
+  bugprone-signed-char-misuse,
+  bugprone-implicit-widening-of-multiplication-result,
+  bugprone-macro-parentheses,
+  bugprone-misplaced-operator-in-strlen-in-alloc,
+  bugprone-branch-clone,
+  readability-container-size-empty,
+  readability-redundant-smartptr-get,
+  readability-redundant-string-init,
+  bugprone-unused-result,
+  bugprone-integer-division,
+  performance-unnecessary-value-param,
+  performance-for-range-copy,
+  performance-implicit-conversion-in-loop,
+  cppcoreguidelines-avoid-capturing-lambda-by-reference-in-return,
+  readability-redundant-declaration
+
+CheckOptions:
+  - key: readability-identifier-naming.VariableCase
+    value: camelBack
+  - key: readability-identifier-naming.FunctionCase
+    value: camelBack
+  - key: readability-identifier-naming.MethodCase
+    value: camelBack
+  - key: readability-identifier-naming.GlobalFunctionCase
+    value: camelBack
+  - key: readability-identifier-naming.MemberPrefix
+    value: 'm_'
+  - key: readability-identifier-naming.StaticVariablePrefix
+    value: 's_'
+  - key: readability-identifier-naming.GlobalVariablePrefix
+    value: 's_'
+  
