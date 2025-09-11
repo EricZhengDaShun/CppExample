@@ -1,76 +1,34 @@
 {
     "version": 3,
-    "cmakeMinimumRequired": {
-        "major": 3,
-        "minor": 25,
-        "patch": 0
-    },
     "configurePresets": [
         {
-            "name": "win-base",
+            "name": "base-linux",
             "hidden": true,
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
-                "CMAKE_C_COMPILER": "cl",
-                "CMAKE_CXX_COMPILER": "cl"
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
             }
         },
         {
-            "name": "win-debug",
-            "inherits": "win-base",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
-            "name": "win-release",
-            "inherits": "win-base",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "linux-base",
-            "hidden": true,
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build",
+            "name": "linux-gcc",
+            "inherits": "base-linux",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++"
-            }
-        },
-        {
-            "name": "linux-debug",
-            "inherits": "linux-base",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
-            "name": "linux-release",
-            "inherits": "linux-base",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
             }
         }
     ],
     "buildPresets": [
         {
-            "name": "win-build-debug",
-            "configurePreset": "win-debug"
+            "name": "linux-debug",
+            "configurePreset": "linux-gcc",
+            "configuration": "Debug"
         },
         {
-            "name": "win-build-release",
-            "configurePreset": "win-release"
-        },
-        {
-            "name": "linux-build-debug",
-            "configurePreset": "linux-debug"
-        },
-        {
-            "name": "linux-build-release",
-            "configurePreset": "linux-release"
+            "name": "linux-release",
+            "configurePreset": "linux-gcc",
+            "configuration": "Release"
         }
     ]
 }
