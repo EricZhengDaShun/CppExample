@@ -1,78 +1,44 @@
 {
     "version": 3,
-    "cmakeMinimumRequired": {
-        "major": 3,
-        "minor": 25,
-        "patch": 0
-    },
     "configurePresets": [
         {
-            "name": "win-base",
+            "name": "base-win",
             "hidden": true,
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
             "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
                 "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-                "CMAKE_C_COMPILER": "cl",
-                "CMAKE_CXX_COMPILER": "cl"
+                "VCPKG_FEATURE_FLAGS": "manifests",
+                "VCPKG_TARGET_TRIPLET": "x64-windows"
             }
         },
         {
-            "name": "win-debug",
-            "inherits": "win-base",
+            "name": "msvc",
+            "inherits": "base-win",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
-            "name": "win-release",
-            "inherits": "win-base",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "linux-base",
-            "hidden": true,
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build",
-            "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-                "CMAKE_C_COMPILER": "gcc",
-                "CMAKE_CXX_COMPILER": "g++"
-            }
-        },
-        {
-            "name": "linux-debug",
-            "inherits": "linux-base",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
-            "name": "linux-release",
-            "inherits": "linux-base",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
+                "CMAKE_CXX_COMPILER": "cl",
+                "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL",
+                "CMAKE_MSVC_DEBUG_INFORMATION_FORMAT": "ProgramDatabase",
+                "CMAKE_EXE_LINKER_FLAGS_DEBUG": "/DEBUG:FULL /INCREMENTAL:NO"
             }
         }
     ],
     "buildPresets": [
         {
-            "name": "win-build-debug",
-            "configurePreset": "win-debug"
+            "name": "msvc-debug",
+            "configurePreset": "msvc",
+            "configuration": "Debug"
         },
         {
-            "name": "win-build-release",
-            "configurePreset": "win-release"
+            "name": "msvc-release",
+            "configurePreset": "msvc",
+            "configuration": "Release"
         },
         {
-            "name": "linux-build-debug",
-            "configurePreset": "linux-debug"
-        },
-        {
-            "name": "linux-build-release",
-            "configurePreset": "linux-release"
+            "name": "msvc-relwithdebinfo",
+            "configurePreset": "msvc",
+            "configuration": "RelWithDebInfo"
         }
     ]
 }
