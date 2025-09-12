@@ -2,7 +2,7 @@
   "version": 3,
   "configurePresets": [
     {
-      "name": "base-win",
+      "name": "baseWin",
       "hidden": true,
       "generator": "Ninja Multi-Config",
       "binaryDir": "${sourceDir}/out/build/${presetName}",
@@ -12,7 +12,7 @@
     },
     {
       "name": "msvc",
-      "inherits": "base-win",
+      "inherits": "baseWin",
       "cacheVariables": {
         "CMAKE_C_COMPILER": "cl",
         "CMAKE_CXX_COMPILER": "cl",
@@ -24,17 +24,17 @@
   ],
   "buildPresets": [
     {
-      "name": "msvc-debug",
+      "name": "msvcDebug",
       "configurePreset": "msvc",
       "configuration": "Debug"
     },
     {
-      "name": "msvc-release",
+      "name": "msvcRelease",
       "configurePreset": "msvc",
       "configuration": "Release"
     },
     {
-      "name": "msvc-relwithdebinfo",
+      "name": "msvcRelWithDebInfo",
       "configurePreset": "msvc",
       "configuration": "RelWithDebInfo"
     }
