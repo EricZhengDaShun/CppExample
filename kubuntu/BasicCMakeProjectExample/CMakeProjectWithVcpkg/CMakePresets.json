@@ -2,7 +2,7 @@
     "version": 3,
     "configurePresets": [
         {
-            "name": "base-linux",
+            "name": "baseLinux",
             "hidden": true,
             "generator": "Ninja Multi-Config",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
@@ -12,8 +12,8 @@
             }
         },
         {
-            "name": "linux-gcc",
-            "inherits": "base-linux",
+            "name": "linuxGcc",
+            "inherits": "baseLinux",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++"
@@ -22,14 +22,19 @@
     ],
     "buildPresets": [
         {
-            "name": "linux-debug",
-            "configurePreset": "linux-gcc",
+            "name": "linuxDebug",
+            "configurePreset": "linuxGcc",
             "configuration": "Debug"
         },
         {
-            "name": "linux-release",
-            "configurePreset": "linux-gcc",
+            "name": "linuxRelease",
+            "configurePreset": "linuxGcc",
             "configuration": "Release"
+        },
+        {
+            "name": "linuxRelWithDebInfo",
+            "configurePreset": "linuxGcc",
+            "configuration": "RelWithDebInfo"
         }
     ]
 }
